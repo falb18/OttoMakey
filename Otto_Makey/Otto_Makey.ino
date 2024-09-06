@@ -37,11 +37,12 @@ int arg3 = 0;
 #define PIN_Buzzer  13 //buzzer
 
 void setup() {
-  Serial.println("setup");
   Otto.initMakey(PIN_LL, PIN_RL, PIN_LF, PIN_RF, PIN_LA, PIN_RA, PIN_HD, false, PIN_Buzzer);
   Otto.initMAKEY_LEDs(PIN_LED_rl, PIN_LED_rr, PIN_LED_g, PIN_LED_b);
   Otto.setEye(PIN_LED_rl, 10);
-  Serial.begin(9600); // Default communication rate of the Bluetooth module  
+  
+  Serial.begin(115200); // Default communication rate of the Bluetooth module
+  Serial.println("Otto Makey setup");
  
 int homes[7]={90, 90, 90, 90, 140, 30, 90}; //All the servos at rest position
 Otto._moveServos(500,homes);   //Move the servos in half a second
