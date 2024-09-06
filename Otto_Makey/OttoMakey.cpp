@@ -39,7 +39,7 @@ void OttoMakey::initMakey(int LL, int RL, int LF, int RF,int LA, int RA, int HD,
   servo[2].SetTrim(-10); // left foot
   servo[3].SetTrim(5); // right foot
   // servo[4].SetTrim(0); // left arm
-  // servo[5].SetTrim(0); // right arm
+  servo[5].SetTrim(10); // right arm
   // servo[6].SetTrim(0); // head
   
   for (int i = 0; i < 7; i++) servo_position[i] = 90;
