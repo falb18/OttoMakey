@@ -39,23 +39,24 @@ int arg3 = 0;
 void setup() {
   Otto.initMakey(PIN_LL, PIN_RL, PIN_LF, PIN_RF, PIN_LA, PIN_RA, PIN_HD, false, PIN_Buzzer);
   Otto.initMAKEY_LEDs(PIN_LED_rl, PIN_LED_rr, PIN_LED_g, PIN_LED_b);
-  Otto.setEye(PIN_LED_rl, 10);
-  
-  Serial.begin(115200); // Default communication rate of the Bluetooth module
-  Serial.println("Otto Makey setup");
 
-  // Set Otto Makey at default position
   Otto.home();
-Otto.setEye(PIN_LED_rr, 10);
-Otto.sing(S_connection);
-for(int i =0;i<6;i++)
-{
-  Otto.setEye(PIN_LED_g, i);
-  delay(50);
-}
-Otto.setEye(PIN_LED_rl, 0);
-Otto.setEye(PIN_LED_rr, 0);
-Otto.sing(S_happy);
+  Otto.setEye(PIN_LED_rr, 10);
+  Otto.setEye(PIN_LED_rl, 10);
+  Otto.sing(S_connection);
+  
+  for(int i =0;i<6;i++)
+  {
+    Otto.setEye(PIN_LED_g, i);
+    delay(50);
+  }
+
+  Otto.setEye(PIN_LED_rl, 0);
+  Otto.setEye(PIN_LED_rr, 0);
+  Otto.sing(S_happy);
+
+  Serial.begin(115200); // Default communication rate of the Bluetooth module
+  printCommands();
 }
 
 void loop() {
@@ -101,6 +102,19 @@ void loop() {
     }  
 
 } //end of loop
+
+void printCommands(void)
+{
+  Serial.println("Otto Makey commands:");
+  Serial.println("");
+  Serial.println("  S\t\t\t\tStop moving Otto Makey");
+  Serial.println("  M [MoveID] [Time] [Move Size]\tPerform movement [MoveID] in [Time] seconds");
+  Serial.println("\t\t\t\tSome movements have a height or frequency which is given by [Move Size]");
+  Serial.println("  H [GestureID]\t\t\tPlay [GestureID]");
+  Serial.println("  K [SingID]\t\t\tPlay song [SingID]");
+  Serial.println("  E [EyePin] [Intensity]\tSet [Intensity] for the [EyePin]");
+  Serial.println("  X [Servo] [Angle]\t\tSet the [servo] to the given [Angle]");
+}
 
 void getArguments(String commandStr)
 {
