@@ -32,12 +32,15 @@ void OttoMakey::initMakey(int LL, int RL, int LF, int RF,int LA, int RA, int HD,
     }
   }
 
-  //manual trim
+  // Manual trim for each part of the body
   
-  servo[0].SetTrim(-8);
-  servo[1].SetTrim(-4);
-  servo[2].SetTrim(8);
-  servo[6].SetTrim(-5);
+  servo[0].SetTrim(10); // left leg
+  // servo[1].SetTrim(0); // right leg
+  servo[2].SetTrim(-10); // left foot
+  servo[3].SetTrim(5); // right foot
+  // servo[4].SetTrim(0); // left arm
+  // servo[5].SetTrim(0); // right arm
+  // servo[6].SetTrim(0); // head
   
   for (int i = 0; i < 7; i++) servo_position[i] = 90;
 

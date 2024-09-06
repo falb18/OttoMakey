@@ -43,9 +43,9 @@ void setup() {
   
   Serial.begin(115200); // Default communication rate of the Bluetooth module
   Serial.println("Otto Makey setup");
- 
-int homes[7]={90, 90, 90, 90, 140, 30, 90}; //All the servos at rest position
-Otto._moveServos(500,homes);   //Move the servos in half a second
+
+  // Set Otto Makey at default position
+  Otto.home();
 Otto.setEye(PIN_LED_rr, 10);
 Otto.sing(S_connection);
 for(int i =0;i<6;i++)
