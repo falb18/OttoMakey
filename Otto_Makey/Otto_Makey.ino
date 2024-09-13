@@ -27,9 +27,9 @@ int arg3 = 0;
 #define PIN_RL 3 // right leg, servo[1]
 #define PIN_LF 4 // left foot, servo[2]
 #define PIN_RF 5 // right foot, servo[3]
-#define PIN_LA 6 // Left arm, servo[4]
-#define PIN_RA 7 // Right arm, servo[5]
-#define PIN_HD 8 // Head /servo[6]
+#define PIN_LA 6 // left arm, servo[4]
+#define PIN_RA 7 // right arm, servo[5]
+#define PIN_HD 8 // head, servo[6]
 #define PIN_LED_rl 9  //Left red LED
 #define PIN_LED_rr 10 //right red LED
 #define PIN_LED_g 11 //green LEDs
@@ -55,13 +55,13 @@ void setup() {
   Otto.setEye(PIN_LED_rr, 0);
   Otto.sing(S_happy);
 
-  Serial.begin(115200); // Default communication rate of the Bluetooth module
+  Serial.begin(38400); // Custom baud rate for HC-06 bluetooth module
   printCommands();
 }
 
 void loop() {
     if(Serial.available() > 0){ // Checks whether data is comming from the serial port
-      serialCmd = Serial.readString();//.read(); // Reads the data from the serial port
+      serialCmd = Serial.readString(); // Reads the data from the serial port
       getArguments(serialCmd);
       
       switch(cmdType) {
